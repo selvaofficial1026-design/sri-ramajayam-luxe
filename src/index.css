@@ -1,0 +1,473 @@
+:root {
+  /* Green Theme Palette (Emerald & Forest) */
+  --emerald-950: #04140f;
+  --emerald-900: #08221a;
+  --emerald-800: #0f382c;
+  --emerald-700: #164e3d;
+  --emerald-600: #1d6852;
+  --emerald-500: #268569;
+  --emerald-100: #e8f5f0;
+  --emerald-50:  #f2faf7;
+
+  /* Blue Theme Palette (Royal Sapphire & Navy) */
+  --sapphire-950: #040d1a;
+  --sapphire-900: #07172c;
+  --sapphire-800: #0b2545;
+  --sapphire-700: #113866;
+  --sapphire-600: #184e8f;
+  --sapphire-500: #2067ba;
+  --sapphire-100: #e6f0fa;
+  --sapphire-50:  #f0f6fc;
+
+  /* Luxury Gold Accents */
+  --gold: #c8a96b;
+  --gold-light: #dfc898;
+  --gold-dark: #9e8045;
+  --gold-glow: rgba(200, 169, 107, 0.35);
+
+  /* Backgrounds & Neutrals */
+  --ivory: #faf7f2;
+  --ivory-dark: #f0ebe1;
+  --beige: #e8dccb;
+  --charcoal: #1e2124;
+  --text-muted: #646c77;
+  --white: #ffffff;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-brand: 'Vegawanty', 'Cinzel', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--sapphire-900);
+  line-height: 1.25;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* ---------- CUSTOM SCROLLBAR ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ivory-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--emerald-700);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sapphire-700);
+}
+
+/* ---------- EYEBROWS & BADGES ---------- */
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.eyebrow-emerald {
+  color: var(--emerald-800);
+  background: var(--emerald-100);
+  border: 1px solid rgba(15, 56, 44, 0.15);
+}
+
+.eyebrow-sapphire {
+  color: var(--sapphire-800);
+  background: var(--sapphire-100);
+  border: 1px solid rgba(11, 37, 69, 0.15);
+}
+
+.eyebrow-gold {
+  color: var(--gold-dark);
+  background: rgba(200, 169, 107, 0.15);
+  border: 1px solid rgba(200, 169, 107, 0.3);
+}
+
+/* ---------- SECTION HEADERS ---------- */
+.section-head {
+  max-width: 760px;
+  margin: 0 auto 50px;
+  text-align: center;
+  position: relative;
+}
+
+.section-head h2 {
+  font-size: clamp(26px, 5vw, 46px);
+  margin-top: 8px;
+  color: var(--sapphire-900);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 18px;
+  word-break: break-word;
+}
+
+.section-head h2::after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--emerald-600), var(--gold), var(--sapphire-600));
+  background-size: 200% 100%;
+  animation: gradientMove 4s ease infinite;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.section-head p {
+  color: var(--text-muted);
+  font-size: clamp(15px, 2.5vw, 18px);
+  margin-top: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* ---------- BUTTONS WITH METALLIC SHINE RIFFLE ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Diagonal metallic light sheen sweep on hover */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: -1;
+  transform: skewX(-25deg);
+}
+
+.btn:hover::before {
+  left: 150%;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 12px 22px;
+    font-size: 13px;
+  }
+}
+
+.btn-emerald {
+  background: linear-gradient(135deg, var(--emerald-800) 0%, var(--emerald-700) 100%);
+  color: var(--white);
+  box-shadow: 0 10px 25px rgba(15, 56, 44, 0.25);
+}
+
+.btn-emerald:hover {
+  background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-600) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(15, 56, 44, 0.4), 0 0 15px rgba(38, 133, 105, 0.3);
+}
+
+.btn-sapphire {
+  background: linear-gradient(135deg, var(--sapphire-800) 0%, var(--sapphire-700) 100%);
+  color: var(--white);
+  box-shadow: 0 10px 25px rgba(11, 37, 69, 0.25);
+}
+
+.btn-sapphire:hover {
+  background: linear-gradient(135deg, var(--sapphire-700) 0%, var(--sapphire-600) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(11, 37, 69, 0.4), 0 0 15px rgba(32, 103, 186, 0.3);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--white);
+  box-shadow: 0 10px 25px rgba(200, 169, 107, 0.3);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #d8b878 0%, var(--gold) 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(200, 169, 107, 0.45), 0 0 20px rgba(200, 169, 107, 0.4);
+}
+
+.btn-outline-sapphire {
+  background: transparent;
+  border-color: var(--sapphire-800);
+  color: var(--sapphire-800);
+}
+
+.btn-outline-sapphire:hover {
+  background: var(--sapphire-800);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(11, 37, 69, 0.2);
+}
+
+.btn-outline-emerald {
+  background: transparent;
+  border-color: var(--emerald-800);
+  color: var(--emerald-800);
+}
+
+.btn-outline-emerald:hover {
+  background: var(--emerald-800);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(15, 56, 44, 0.2);
+}
+
+/* ---------- ADVANCED LUXURY GLASS CARDS (2.0) ---------- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Luxury animated aura shadow & elevation on hover */
+.glass-card:hover {
+  transform: translateY(-8px) scale(1.008);
+  box-shadow: 0 25px 50px rgba(11, 37, 69, 0.12), 0 0 25px rgba(200, 169, 107, 0.25);
+  border-color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .glass-card:hover {
+    transform: none; /* Disable hover elevate on touch devices */
+  }
+}
+
+/* ---------- ADVANCED LUXURY CSS EFFECTS & ANIMATIONS ---------- */
+
+/* 1. Animated Gold Shimmer Text */
+.gold-shimmer-text {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--gold) 40%,
+    #ffffff 60%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shineText 6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes shineText {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. Ambient Pulsing Glow Orbs */
+.ambient-glow {
+  position: relative;
+}
+.ambient-glow::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(200, 169, 107, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+/* 3. General Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ---------- WHATSAPP BUTTON ---------- */
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.whatsapp-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 0.6s ease;
+  transform: skewX(-25deg);
+}
+
+.whatsapp-btn:hover::before {
+  left: 150%;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4), 0 0 15px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 480px) {
+  .whatsapp-btn {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}
+
+/* ---------- RESPONSIVE HELPER UTILITIES ---------- */
+.responsive-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.responsive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+@media (max-width: 600px) {
+  .responsive-grid-2,
+  .responsive-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
