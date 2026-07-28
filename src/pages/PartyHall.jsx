@@ -232,32 +232,44 @@ export default function PartyHall({ setActivePage }) {
             <p style={{ fontSize: '15px' }}>We provide complete event management assistance from decor selection to traditional feasts.</p>
           </div>
 
-          <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
+          <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '26px' }}>
             {[
-              { icon: Utensils, title: 'Royal Gourmet Catering', desc: 'Traditional Banana Leaf South Indian wedding feasts, North Indian buffets, and live dessert counters cooked by master chefs.' },
-              { icon: Sparkles, title: 'Custom Stage Decor', desc: 'Collaborate with our empanelled decorators for traditional floral mandaps, contemporary backdrops, and LED arches.' },
-              { icon: Music, title: 'Acoustic Sound & Lighting', desc: 'Pre-installed professional sound systems, wireless microphones, and intelligent mood lighting for speeches.' },
-              { icon: Heart, title: 'VIP Bridal Green Rooms', desc: 'Air-conditioned luxury dressing suites with full-length mirrors and attached restrooms for the bride and groom.' },
-              { icon: Car, title: 'Valet Parking & Support', desc: 'Dedicated parking bays for over 200 cars with trained security and valet drivers for effortless arrivals.' },
-              { icon: ShieldCheck, title: '100% Power Backup', desc: 'Uninterrupted heavy-duty generator backup ensuring your lights, ACs, and music never fade for a second.' },
+              { icon: Utensils, title: 'Royal Gourmet Catering', desc: 'Authentic Banana Leaf South Indian wedding feasts, North Indian royal buffets, and live dessert counters cooked by traditional master chefs.', badge: '👑 Master Chefs' },
+              { icon: Sparkles, title: 'Custom Stage & Mandap Decor', desc: 'Collaborate with our empanelled floral decorators for traditional royal mandaps, contemporary backdrops, and fairy-light arches.', badge: '✨ Bespoke Themes' },
+              { icon: Music, title: 'Acoustic Sound & Lighting', desc: 'Pre-installed professional sound systems, wireless microphones, acoustic engineering, and intelligent mood lighting for grand speeches.', badge: '🎵 Acoustic Studio' },
+              { icon: Heart, title: 'VIP Bridal Green Suites', desc: 'Air-conditioned luxury private dressing lounges with full-length vanity mirrors and attached executive washrooms for couple privacy.', badge: '👰 Bridal Privacy' },
             ].map((srv, idx) => {
               const IconComp = srv.icon;
               return (
                 <div
                   key={idx}
-                  className="bento-card scroll-reveal"
+                  className="bento-card spring-hover scroll-reveal"
                   style={{
                     display: 'flex',
-                    gap: '14px',
+                    flexDirection: 'column',
+                    gap: '16px',
                     alignItems: 'flex-start',
+                    background: 'linear-gradient(145deg, #ffffff 0%, var(--sapphire-50) 100%)',
+                    border: '1.5px solid rgba(11, 37, 69, 0.2)',
+                    borderRadius: '22px',
+                    padding: '24px',
+                    boxShadow: '0 12px 30px rgba(7, 23, 44, 0.08), 0 0 15px rgba(200, 169, 107, 0.08)',
+                    position: 'relative',
+                    overflow: 'hidden',
                   }}
                 >
-                  <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--sapphire-100)', color: 'var(--sapphire-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(11, 37, 69, 0.1)' }}>
-                    <IconComp size={20} />
+                  <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'linear-gradient(180deg, var(--sapphire-800) 0%, var(--gold) 100%)' }} />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'linear-gradient(135deg, var(--sapphire-800) 0%, var(--sapphire-950) 100%)', color: 'var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 6px 15px rgba(11, 37, 69, 0.25)' }}>
+                      <IconComp size={22} />
+                    </div>
+                    <span style={{ fontSize: '11px', background: '#fff', color: 'var(--sapphire-800)', padding: '4px 12px', borderRadius: '20px', fontWeight: 700, border: '1px solid rgba(11, 37, 69, 0.2)', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                      {srv.badge}
+                    </span>
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '16px', color: 'var(--sapphire-900)', marginBottom: '4px' }}>{srv.title}</h4>
-                    <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>{srv.desc}</p>
+                    <h4 style={{ fontSize: '17px', color: 'var(--sapphire-950)', marginBottom: '6px', fontFamily: 'var(--font-serif)', fontWeight: 700 }}>{srv.title}</h4>
+                    <p style={{ fontSize: '13.5px', color: 'var(--charcoal)', margin: 0, lineHeight: 1.6 }}>{srv.desc}</p>
                   </div>
                 </div>
               );

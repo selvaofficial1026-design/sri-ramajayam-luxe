@@ -41,60 +41,136 @@ export default function Contact() {
       <section style={{ padding: '50px 0 60px', background: 'var(--ivory)' }}>
         <div className="container" style={{ maxWidth: '1060px' }}>
           {/* Top Compact Direct Contacts Grid */}
+          {/* 4 Professional Executive Bento Contact Boxes */}
           <div
             className="bento-grid"
             style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-              gap: '20px',
-              marginBottom: '26px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '24px',
+              marginBottom: '40px',
             }}
           >
-            {/* Card 1: Location */}
-            <div className="bento-card scroll-reveal" style={{ padding: '20px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'var(--emerald-100)', color: 'var(--emerald-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(15, 56, 44, 0.12)' }}>
-                <MapPin size={20} />
+            {/* Box 1: Location & Headquarters */}
+            <div
+              className="bento-card spring-hover scroll-reveal"
+              style={{
+                background: 'linear-gradient(145deg, #ffffff 0%, var(--emerald-50) 100%)',
+                border: '1.5px solid rgba(29, 104, 82, 0.2)',
+                borderRadius: '20px',
+                padding: '24px',
+                boxShadow: '0 10px 25px rgba(15, 56, 44, 0.07)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '14px',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'linear-gradient(135deg, var(--emerald-800) 0%, var(--emerald-950) 100%)', color: 'var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(15, 56, 44, 0.2)' }}>
+                  <MapPin size={20} />
+                </div>
+                <span style={{ fontSize: '11px', background: '#fff', color: 'var(--emerald-800)', padding: '3px 10px', borderRadius: '20px', fontWeight: 700, border: '1px solid rgba(29, 104, 82, 0.2)' }}>
+                  🏛️ ISO Certified
+                </span>
               </div>
               <div>
-                <h4 style={{ fontSize: '15.5px', color: 'var(--sapphire-900)', margin: '0 0 4px' }}>Our Location</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '13px', margin: 0, lineHeight: 1.45 }}>
-                  108, Royal Heritage Road, Opposite City Center Mall,<br />Tamil Nadu — 600001
-                </p>
+                <h4 style={{ fontSize: '17px', color: 'var(--sapphire-950)', margin: '0 0 8px', fontFamily: 'var(--font-serif)', fontWeight: 700 }}>Headquarters & Estate</h4>
+                <div style={{ color: 'var(--charcoal)', fontSize: '13.5px', lineHeight: 1.6, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span>📍 <strong>108, Royal Heritage Road</strong></span>
+                  <span style={{ color: 'var(--text-muted)' }}>Opposite City Center Mall, Tamil Nadu — 600001</span>
+                </div>
               </div>
             </div>
 
-            {/* Card 2: Phone */}
-            <div className="bento-card scroll-reveal" style={{ padding: '20px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'var(--sapphire-100)', color: 'var(--sapphire-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(11, 37, 69, 0.12)' }}>
-                <PhoneCall size={20} />
+            {/* Box 2: Phone Concierge Desk */}
+            <div
+              className="bento-card spring-hover scroll-reveal"
+              style={{
+                background: 'linear-gradient(145deg, #ffffff 0%, var(--sapphire-50) 100%)',
+                border: '1.5px solid rgba(11, 37, 69, 0.2)',
+                borderRadius: '20px',
+                padding: '24px',
+                boxShadow: '0 10px 25px rgba(11, 37, 69, 0.07)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '14px',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'linear-gradient(135deg, var(--sapphire-800) 0%, var(--sapphire-950) 100%)', color: 'var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(11, 37, 69, 0.2)' }}>
+                  <PhoneCall size={20} />
+                </div>
+                <span style={{ fontSize: '11px', background: '#fff', color: '#16a34a', padding: '3px 10px', borderRadius: '20px', fontWeight: 700, border: '1px solid #bbf7d0' }}>
+                  🟢 Live 24/7 Desk
+                </span>
               </div>
               <div>
-                <h4 style={{ fontSize: '15.5px', color: 'var(--sapphire-900)', margin: '0 0 4px' }}>Call 24/7 Desk</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '13px', margin: '0 0 2px', fontWeight: 600 }}>+91 98765 43210 (Lodge)</p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '13px', margin: 0, fontWeight: 600 }}>+91 98765 43211 (Banquets)</p>
+                <h4 style={{ fontSize: '17px', color: 'var(--sapphire-950)', margin: '0 0 8px', fontFamily: 'var(--font-serif)', fontWeight: 700 }}>Direct Concierge Lines</h4>
+                <div style={{ color: 'var(--charcoal)', fontSize: '13.5px', lineHeight: 1.6, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span>🏨 Lodge Desk: <strong>+91 98765 43210</strong></span>
+                  <span>🏛️ Banquet Desk: <strong>+91 98765 43211</strong></span>
+                </div>
               </div>
             </div>
 
-            {/* Card 3: Email */}
-            <div className="bento-card scroll-reveal" style={{ padding: '20px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'rgba(200, 169, 107, 0.2)', color: 'var(--gold-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(200, 169, 107, 0.2)' }}>
-                <Mail size={20} />
+            {/* Box 3: Email Support Desk */}
+            <div
+              className="bento-card spring-hover scroll-reveal"
+              style={{
+                background: 'linear-gradient(145deg, #ffffff 0%, #fffbeb 100%)',
+                border: '1.5px solid rgba(200, 169, 107, 0.35)',
+                borderRadius: '20px',
+                padding: '24px',
+                boxShadow: '0 10px 25px rgba(200, 169, 107, 0.1)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '14px',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'linear-gradient(135deg, var(--gold-dark) 0%, #856937 100%)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(200, 169, 107, 0.3)' }}>
+                  <Mail size={20} />
+                </div>
+                <span style={{ fontSize: '11px', background: '#fff', color: 'var(--gold-dark)', padding: '3px 10px', borderRadius: '20px', fontWeight: 700, border: '1px solid rgba(200, 169, 107, 0.3)' }}>
+                  📬 Fast Response
+                </span>
               </div>
               <div>
-                <h4 style={{ fontSize: '15.5px', color: 'var(--sapphire-900)', margin: '0 0 4px' }}>Email Support Desk</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '12.5px', margin: '0 0 2px' }}>reservations@sriramajayam.com</p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '12.5px', margin: 0 }}>events@sriramajayam.com</p>
+                <h4 style={{ fontSize: '17px', color: 'var(--sapphire-950)', margin: '0 0 8px', fontFamily: 'var(--font-serif)', fontWeight: 700 }}>Executive Email Desk</h4>
+                <div style={{ color: 'var(--charcoal)', fontSize: '12.5px', lineHeight: 1.6, display: 'flex', flexDirection: 'column', gap: '4px', fontWeight: 600 }}>
+                  <span>🛏️ reservations@sriramajayam.com</span>
+                  <span>🎉 events@sriramajayam.com</span>
+                </div>
               </div>
             </div>
 
-            {/* Card 4: Hours */}
-            <div className="bento-card scroll-reveal" style={{ padding: '20px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-              <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'var(--emerald-100)', color: 'var(--emerald-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(15, 56, 44, 0.12)' }}>
-                <Clock size={20} />
+            {/* Box 4: Operating Hours */}
+            <div
+              className="bento-card spring-hover scroll-reveal"
+              style={{
+                background: 'linear-gradient(145deg, #ffffff 0%, var(--emerald-50) 100%)',
+                border: '1.5px solid rgba(29, 104, 82, 0.2)',
+                borderRadius: '20px',
+                padding: '24px',
+                boxShadow: '0 10px 25px rgba(15, 56, 44, 0.07)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '14px',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'linear-gradient(135deg, var(--emerald-800) 0%, var(--emerald-950) 100%)', color: 'var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(15, 56, 44, 0.2)' }}>
+                  <Clock size={20} />
+                </div>
+                <span style={{ fontSize: '11px', background: '#fff', color: 'var(--emerald-800)', padding: '3px 10px', borderRadius: '20px', fontWeight: 700, border: '1px solid rgba(29, 104, 82, 0.2)' }}>
+                  ⚡ 365 Days
+                </span>
               </div>
               <div>
-                <h4 style={{ fontSize: '15.5px', color: 'var(--sapphire-900)', margin: '0 0 4px' }}>Operating Hours</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '13px', margin: '0 0 2px' }}>Front Desk: <strong>24 Hrs / 365 Days</strong></p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '13px', margin: 0 }}>Hall Visits: <strong>9 AM — 8 PM Daily</strong></p>
+                <h4 style={{ fontSize: '17px', color: 'var(--sapphire-950)', margin: '0 0 8px', fontFamily: 'var(--font-serif)', fontWeight: 700 }}>Operating Timetable</h4>
+                <div style={{ color: 'var(--charcoal)', fontSize: '13px', lineHeight: 1.6, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span>🛎️ Front Desk: <strong>24 Hrs / 365 Days</strong></span>
+                  <span>👁️ Hall Visits: <strong>9 AM — 8 PM Daily</strong></span>
+                </div>
               </div>
             </div>
           </div>

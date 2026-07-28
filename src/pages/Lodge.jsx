@@ -260,32 +260,44 @@ export default function Lodge({ setActivePage }) {
             <p style={{ fontSize: '15px' }}>Every lodge guest enjoys complimentary access to our signature five-star amenities.</p>
           </div>
 
-          <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
+          <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '26px' }}>
             {[
-              { icon: Wifi, title: 'Complimentary High-Speed Wi-Fi', desc: 'Seamless 100 Mbps fiber connectivity across all suites and common areas.' },
-              { icon: UserCheck, title: '24/7 Room Service & Dining', desc: 'Round-the-clock room dining service featuring South Indian & Continental menus.' },
-              { icon: Wind, title: 'Climate Controlled Air Conditioning', desc: 'Pre-cooled rooms and individual temperature control in every suite.' },
-              { icon: ShieldCheck, title: '100% Sanitized Hygiene', desc: 'Daily deep sanitization and fresh organic cotton linens changed daily.' },
-              { icon: Car, title: 'Valet & Secure Car Parking', desc: 'Ample on-site parking with 24-hour CCTV surveillance and security staff.' },
-              { icon: Coffee, title: 'Complimentary Morning Breakfast', desc: 'Freshly prepared traditional idli, dosa, and filter coffee served every morning.' },
+              { icon: Wifi, title: 'Complimentary 100 Mbps Wi-Fi', desc: 'Seamless high-speed fiber connectivity across all executive suites and common lounge areas for business & leisure.', badge: '⚡ High Speed' },
+              { icon: UserCheck, title: '24/7 Room Service & Dining', desc: 'Round-the-clock personalized room dining featuring authentic South Indian delicacies and Continental menus.', badge: '🍽️ Always On' },
+              { icon: Wind, title: 'Automated Climate AC', desc: 'Pre-cooled luxury suites with smart individual temperature and air-quality control in every room.', badge: '❄️ Smart Cooling' },
+              { icon: ShieldCheck, title: '100% Sanitized Luxury Hygiene', desc: 'Daily deep UV sanitization, premium organic cotton linens, and imported herbal bath amenities.', badge: '🛡️ Certified Safe' },
             ].map((am, idx) => {
               const IconComp = am.icon;
               return (
                 <div
                   key={idx}
-                  className="bento-card scroll-reveal"
+                  className="bento-card spring-hover scroll-reveal"
                   style={{
                     display: 'flex',
-                    gap: '14px',
+                    flexDirection: 'column',
+                    gap: '16px',
                     alignItems: 'flex-start',
+                    background: 'linear-gradient(145deg, #ffffff 0%, var(--emerald-50) 100%)',
+                    border: '1.5px solid rgba(29, 104, 82, 0.22)',
+                    borderRadius: '22px',
+                    padding: '24px',
+                    boxShadow: '0 12px 30px rgba(15, 56, 44, 0.08), 0 0 15px rgba(29, 104, 82, 0.05)',
+                    position: 'relative',
+                    overflow: 'hidden',
                   }}
                 >
-                  <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--emerald-100)', color: 'var(--emerald-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(15, 56, 44, 0.1)' }}>
-                    <IconComp size={20} />
+                  <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'linear-gradient(180deg, var(--emerald-800) 0%, var(--gold) 100%)' }} />
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                    <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'linear-gradient(135deg, var(--emerald-800) 0%, var(--emerald-950) 100%)', color: 'var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 6px 15px rgba(15, 56, 44, 0.25)' }}>
+                      <IconComp size={22} />
+                    </div>
+                    <span style={{ fontSize: '11px', background: '#fff', color: 'var(--emerald-800)', padding: '4px 12px', borderRadius: '20px', fontWeight: 700, border: '1px solid rgba(29, 104, 82, 0.2)', boxShadow: '0 2px 6px rgba(0,0,0,0.04)' }}>
+                      {am.badge}
+                    </span>
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '16px', color: 'var(--sapphire-900)', marginBottom: '4px' }}>{am.title}</h4>
-                    <p style={{ fontSize: '13.5px', color: 'var(--text-muted)', margin: 0, lineHeight: 1.5 }}>{am.desc}</p>
+                    <h4 style={{ fontSize: '17px', color: 'var(--sapphire-950)', marginBottom: '6px', fontFamily: 'var(--font-serif)', fontWeight: 700 }}>{am.title}</h4>
+                    <p style={{ fontSize: '13.5px', color: 'var(--charcoal)', margin: 0, lineHeight: 1.6 }}>{am.desc}</p>
                   </div>
                 </div>
               );

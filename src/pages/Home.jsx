@@ -102,102 +102,111 @@ export default function Home({ setActivePage }) {
             <p style={{ fontSize: '15px' }}>Whether you seek a tranquil retreat from your travels or a majestic venue to host guests, Sri Ramajayam Luxe is engineered for perfection.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 360px))', justifyContent: 'center', gap: '26px' }}>
-            {/* Compact Medium Square Card 1: Lodge */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 440px))',
+              justifyContent: 'center',
+              gap: '36px',
+            }}
+          >
+            {/* Grand Square Card 1: Lodge */}
             <div
               onClick={() => handleNav('lodge')}
-              className="glass-card scroll-reveal"
+              className="glass-card scroll-reveal layered-shadow-lg"
               style={{
                 background: '#ffffff',
-                borderRadius: '20px',
+                borderRadius: '24px',
                 overflow: 'hidden',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
-                border: '1px solid rgba(15, 56, 44, 0.12)',
+                border: '1.5px solid rgba(29, 104, 82, 0.2)',
                 width: '100%',
-                maxWidth: '360px',
-                height: '370px', /* Equal height and width medium compact proportions */
+                maxWidth: '440px',
+                height: '440px', /* Equal height and width grand square proportions */
                 margin: '0 auto',
+                boxShadow: '0 15px 35px rgba(15, 56, 44, 0.08), 0 0 20px rgba(29, 104, 82, 0.05)',
               }}
             >
-              <div className="img-zoom-container" style={{ height: '150px', flexShrink: 0, position: 'relative' }}>
+              <div className="img-zoom-container" style={{ height: '210px', flexShrink: 0, position: 'relative' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop"
-                  alt="Lodge Stays"
+                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=900&auto=format&fit=crop"
+                  alt="Executive Lodge"
                 />
-                <div style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--emerald-800)', color: '#fff', padding: '3px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', zIndex: 2 }}>
+                <div style={{ position: 'absolute', top: '14px', left: '14px', background: 'var(--emerald-800)', color: '#fff', padding: '5px 14px', borderRadius: '25px', fontSize: '11.5px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', zIndex: 2, boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }}>
                   Serene Stays
                 </div>
               </div>
-              <div style={{ padding: '16px 18px 14px', display: 'flex', flexDirection: 'column', flex: 1, justifyItems: 'space-between' }}>
+              <div style={{ padding: '22px 24px 18px', display: 'flex', flexDirection: 'column', flex: 1, justifyItems: 'space-between' }}>
                 <div>
-                  <h3 style={{ fontSize: '18px', color: 'var(--emerald-900)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    <Building2 size={18} color="var(--emerald-700)" />
+                  <h3 style={{ fontSize: '21px', color: 'var(--emerald-900)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'var(--font-serif)' }}>
+                    <Building2 size={22} color="var(--emerald-700)" />
                     The Luxury Lodge
                   </h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '12.5px', marginBottom: '12px', lineHeight: 1.45, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '36px' }}>
-                    Immerse yourself in peaceful relaxation with our architect-designed executive rooms and family suites.
+                  <p style={{ color: 'var(--text-muted)', fontSize: '13.5px', marginBottom: '14px', lineHeight: 1.55, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '42px' }}>
+                    Immerse yourself in peaceful relaxation with our architect-designed executive suites and family stays.
                   </p>
-                  <div style={{ display: 'flex', gap: '5px', overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '10.5px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '3px 8px', borderRadius: '6px', fontWeight: 600, flexShrink: 0 }}>✨ Smart LED TV</span>
-                    <span style={{ fontSize: '10.5px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '3px 8px', borderRadius: '6px', fontWeight: 600, flexShrink: 0 }}>🍽️ 24/7 Dining</span>
-                    <span style={{ fontSize: '10.5px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '3px 8px', borderRadius: '6px', fontWeight: 600, flexShrink: 0 }}>❄️ Central AC</span>
+                  <div style={{ display: 'flex', gap: '6px', overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '16px' }}>
+                    <span style={{ fontSize: '11px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '4px 10px', borderRadius: '8px', fontWeight: 600, flexShrink: 0, border: '1px solid rgba(29, 104, 82, 0.15)' }}>✨ Smart LED TV</span>
+                    <span style={{ fontSize: '11px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '4px 10px', borderRadius: '8px', fontWeight: 600, flexShrink: 0, border: '1px solid rgba(29, 104, 82, 0.15)' }}>🍽️ 24/7 Dining</span>
+                    <span style={{ fontSize: '11px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '4px 10px', borderRadius: '8px', fontWeight: 600, flexShrink: 0, border: '1px solid rgba(29, 104, 82, 0.15)' }}>❄️ Central AC</span>
                   </div>
                 </div>
-                <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '10px', marginTop: 'auto' }}>
-                  <span className="btn btn-outline-emerald spring-hover" style={{ width: '100%', padding: '8px 16px', fontSize: '12px', justifyContent: 'center' }}>
-                    Explore Rooms <ArrowRight size={13} />
+                <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '12px', marginTop: 'auto' }}>
+                  <span className="btn btn-outline-emerald spring-hover" style={{ width: '100%', padding: '10px 18px', fontSize: '13px', justifyContent: 'center', fontWeight: 600 }}>
+                    Explore Rooms <ArrowRight size={15} />
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Compact Medium Square Card 2: Party Hall */}
+            {/* Grand Square Card 2: Party Hall */}
             <div
               onClick={() => handleNav('party-hall')}
-              className="glass-card scroll-reveal"
+              className="glass-card scroll-reveal layered-shadow-lg"
               style={{
                 background: '#ffffff',
-                borderRadius: '20px',
+                borderRadius: '24px',
                 overflow: 'hidden',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
-                border: '1px solid rgba(11, 37, 69, 0.12)',
+                border: '1.5px solid rgba(11, 37, 69, 0.2)',
                 width: '100%',
-                maxWidth: '360px',
-                height: '370px', /* Equal height and width medium compact proportions */
+                maxWidth: '440px',
+                height: '440px', /* Equal height and width grand square proportions */
                 margin: '0 auto',
+                boxShadow: '0 15px 35px rgba(11, 37, 69, 0.08), 0 0 20px rgba(11, 37, 69, 0.05)',
               }}
             >
-              <div className="img-zoom-container" style={{ height: '150px', flexShrink: 0, position: 'relative' }}>
+              <div className="img-zoom-container" style={{ height: '210px', flexShrink: 0, position: 'relative' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=900&auto=format&fit=crop"
                   alt="Grand Party Hall"
                 />
-                <div style={{ position: 'absolute', top: '10px', left: '10px', background: 'var(--sapphire-800)', color: '#fff', padding: '3px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', zIndex: 2 }}>
+                <div style={{ position: 'absolute', top: '14px', left: '14px', background: 'var(--sapphire-800)', color: '#fff', padding: '5px 14px', borderRadius: '25px', fontSize: '11.5px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', zIndex: 2, boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }}>
                   Majestic Banquets
                 </div>
               </div>
-              <div style={{ padding: '16px 18px 14px', display: 'flex', flexDirection: 'column', flex: 1, justifyItems: 'space-between' }}>
+              <div style={{ padding: '22px 24px 18px', display: 'flex', flexDirection: 'column', flex: 1, justifyItems: 'space-between' }}>
                 <div>
-                  <h3 style={{ fontSize: '18px', color: 'var(--sapphire-900)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    <PartyPopper size={18} color="var(--sapphire-700)" />
+                  <h3 style={{ fontSize: '21px', color: 'var(--sapphire-900)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontFamily: 'var(--font-serif)' }}>
+                    <PartyPopper size={22} color="var(--sapphire-700)" />
                     The Grand Banquets
                   </h3>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '12.5px', marginBottom: '12px', lineHeight: 1.45, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '36px' }}>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '13.5px', marginBottom: '14px', lineHeight: 1.55, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '42px' }}>
                     Host grand weddings, birthday receptions, corporate galas, and engagement ceremonies in our pillarless halls.
                   </p>
-                  <div style={{ display: 'flex', gap: '5px', overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '12px' }}>
-                    <span style={{ fontSize: '10.5px', background: 'var(--sapphire-50)', color: 'var(--sapphire-800)', padding: '3px 8px', borderRadius: '6px', fontWeight: 600, flexShrink: 0 }}>🏛️ 800 Pax</span>
-                    <span style={{ fontSize: '10.5px', background: 'var(--sapphire-50)', color: 'var(--sapphire-800)', padding: '3px 8px', borderRadius: '6px', fontWeight: 600, flexShrink: 0 }}>🎵 Bose Audio</span>
-                    <span style={{ fontSize: '10.5px', background: 'var(--sapphire-50)', color: 'var(--sapphire-800)', padding: '3px 8px', borderRadius: '6px', fontWeight: 600, flexShrink: 0 }}>💐 Custom Decor</span>
+                  <div style={{ display: 'flex', gap: '6px', overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '16px' }}>
+                    <span style={{ fontSize: '11px', background: 'var(--sapphire-50)', color: 'var(--sapphire-800)', padding: '4px 10px', borderRadius: '8px', fontWeight: 600, flexShrink: 0, border: '1px solid rgba(11, 37, 69, 0.15)' }}>🏛️ 800 Pax</span>
+                    <span style={{ fontSize: '11px', background: 'var(--sapphire-50)', color: 'var(--sapphire-800)', padding: '4px 10px', borderRadius: '8px', fontWeight: 600, flexShrink: 0, border: '1px solid rgba(11, 37, 69, 0.15)' }}>🎵 Bose Audio</span>
+                    <span style={{ fontSize: '11px', background: 'var(--sapphire-50)', color: 'var(--sapphire-800)', padding: '4px 10px', borderRadius: '8px', fontWeight: 600, flexShrink: 0, border: '1px solid rgba(11, 37, 69, 0.15)' }}>💐 Custom Decor</span>
                   </div>
                 </div>
-                <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '10px', marginTop: 'auto' }}>
-                  <span className="btn btn-outline-sapphire spring-hover" style={{ width: '100%', padding: '8px 16px', fontSize: '12px', justifyContent: 'center' }}>
-                    View Halls <ArrowRight size={13} />
+                <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '12px', marginTop: 'auto' }}>
+                  <span className="btn btn-outline-sapphire spring-hover" style={{ width: '100%', padding: '10px 18px', fontSize: '13px', justifyContent: 'center', fontWeight: 600 }}>
+                    View Halls <ArrowRight size={15} />
                   </span>
                 </div>
               </div>
