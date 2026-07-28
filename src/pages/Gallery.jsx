@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Camera, X, ZoomIn, Sparkles } from 'lucide-react';
 
 export default function Gallery() {
@@ -6,12 +6,24 @@ export default function Gallery() {
   const [lightboxImage, setLightboxImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (!loading) {
+      const timer = setTimeout(() => {
+        document.querySelectorAll('.scroll-reveal, .reveal-up, .reveal-left, .reveal-right').forEach((el) => {
+          el.classList.add('reveal-active');
+        });
+      }, 40);
+      return () => clearTimeout(timer);
+    }
+  }, [filter, loading]);
+
   const handleFilterChange = (cat) => {
     if (filter === cat) return;
     setLoading(true);
     setFilter(cat);
     setTimeout(() => setLoading(false), 450); // Simulate brief shimmer loader for effect #8
   };
+
 
   const images = [
     {
