@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import { Building2, Wifi, Tv, Coffee, ShieldCheck, CheckCircle2, ArrowRight, UserCheck, Car, Wind, Sparkles } from 'lucide-react';
+import { Building2, Wifi, Tv, Coffee, ShieldCheck, CheckCircle2, ArrowRight, UserCheck, Car, Wind, Sparkles, ZoomIn, X, Users, Maximize2 } from 'lucide-react';
 
 export default function Lodge({ setActivePage }) {
   const [filter, setFilter] = useState('All');
+  const [loading, setLoading] = useState(false);
+  const [lightboxRoom, setLightboxRoom] = useState(null);
+
+  const handleFilterChange = (cat) => {
+    if (filter === cat) return;
+    setLoading(true);
+    setFilter(cat);
+    setTimeout(() => setLoading(false), 450); // Simulate brief shimmer loader for effect #8
+  };
 
   const rooms = [
     {
@@ -13,9 +22,9 @@ export default function Lodge({ setActivePage }) {
       size: '380 sq.ft',
       bed: '1 King Bed',
       guests: '2 Adults, 1 Child',
-      image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=800&auto=format&fit=crop',
-      desc: 'Spacious executive room for corporate travelers and couples seeking tranquility with automated climate control and ergonomic workspace.',
-      tags: ['❄️ Central AC', '📶 100 Mbps Wi-Fi', '📺 Smart LED TV', '🍽️ 24/7 Room Service'],
+      image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1200&auto=format&fit=crop',
+      desc: 'Spacious executive room for corporate travelers seeking tranquility with automated climate control and workspace.',
+      tags: ['❄️ Central AC', '📶 100 Mbps Wi-Fi', '📺 Smart TV', '🍽️ 24/7 Room Service'],
     },
     {
       id: 2,
@@ -25,9 +34,9 @@ export default function Lodge({ setActivePage }) {
       size: '550 sq.ft',
       bed: '2 Queen Beds',
       guests: '4 Adults, 2 Children',
-      image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800&auto=format&fit=crop',
-      desc: 'An expansive suite tailored for families attending weddings or vacationing in comfort with separate sitting lounge and dual vanities.',
-      tags: ['🛏️ 2 Queen Beds', '🛋️ Sitting Lounge', '☕ Buffet Breakfast', '👔 Express Laundry'],
+      image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop',
+      desc: 'An expansive suite tailored for families attending weddings or vacationing in comfort with sitting lounge.',
+      tags: ['🛏️ 2 Queen Beds', '🛋️ Lounge Area', '☕ Buffet Breakfast', '👔 Express Laundry'],
     },
     {
       id: 3,
@@ -37,9 +46,9 @@ export default function Lodge({ setActivePage }) {
       size: '850 sq.ft',
       bed: '1 King Royal Bed',
       guests: '2 Adults, 2 Children',
-      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop',
-      desc: 'Our flagship VIP lodge accommodation offering panoramic garden views, private balcony, luxury jacuzzi bath, and dedicated butler assistance.',
-      tags: ['🌿 Garden Balcony', '🛁 Luxury Jacuzzi', '🤵 24-Hr Butler', '🚗 Free Station Transfer'],
+      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop',
+      desc: 'Our flagship VIP lodge accommodation offering panoramic garden views, private balcony, and jacuzzi bath.',
+      tags: ['🌿 Balcony View', '🛁 Jacuzzi Bath', '🤵 24-Hr Butler', '🚗 Airport Transfer'],
     },
     {
       id: 4,
@@ -49,9 +58,9 @@ export default function Lodge({ setActivePage }) {
       size: '280 sq.ft',
       bed: '1 Queen Bed',
       guests: '1 or 2 Adults',
-      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop',
-      desc: 'Smart, efficient comfort with soundproof windows, high-speed Wi-Fi, and express check-in/check-out for busy professionals.',
-      tags: ['🔕 Soundproof Windows', '💻 Ergonomic Desk', '📶 High-Speed Wi-Fi', '🚿 Power Shower'],
+      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop',
+      desc: 'Smart, efficient comfort with soundproof windows, high-speed Wi-Fi, and express check-in for busy professionals.',
+      tags: ['🔕 Soundproof', '💻 Desk Workstation', '📶 Fast Wi-Fi', '🚿 Power Shower'],
     },
   ];
 
@@ -59,7 +68,7 @@ export default function Lodge({ setActivePage }) {
 
   return (
     <div className="animate-fade-in">
-      {/* ---------- HEADER BANNER WITH GOLD SHIMMER & FLOATING ORB ---------- */}
+      {/* ---------- HEADER BANNER WITH TEXT REVEAL MASKS & AMBIENT ORBS ---------- */}
       <section
         style={{
           background: 'linear-gradient(135deg, var(--emerald-950) 0%, var(--emerald-800) 100%)',
@@ -79,7 +88,7 @@ export default function Lodge({ setActivePage }) {
             Serene Five-Star Comfort
           </span>
           <h1 style={{ fontSize: 'clamp(30px, 4.5vw, 48px)', color: '#fff', marginBottom: '14px' }}>
-            <span className="gold-shimmer-text">Luxury Lodge</span> Accommodations
+            <span className="text-mask-container"><span className="text-mask-reveal"><span className="gold-shimmer-text">Luxury Lodge</span> Accommodations</span></span>
           </h1>
           <p style={{ fontSize: 'clamp(14.5px, 2.3vw, 17px)', color: '#dcd1c1', fontWeight: 300, lineHeight: 1.6 }}>
             Designed for discerning travelers and wedding guests who value peaceful rest, pristine hygiene, and warm personalized hospitality.
@@ -87,13 +96,14 @@ export default function Lodge({ setActivePage }) {
         </div>
       </section>
 
-      {/* ---------- ROOM CATEGORY FILTER TABS WITH GLOW ---------- */}
+      {/* ---------- ROOM CATEGORY FILTER TABS WITH CUBIC BEZIER HOVER ---------- */}
       <section style={{ padding: '26px 0', background: 'var(--ivory)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap' }}>
           {['All', 'Executive', 'Family', 'Presidential'].map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
+              onClick={() => handleFilterChange(cat)}
+              className="spring-hover"
               style={{
                 padding: '8px 20px',
                 borderRadius: '30px',
@@ -102,7 +112,6 @@ export default function Lodge({ setActivePage }) {
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                 background: filter === cat ? 'var(--emerald-800)' : '#fff',
                 color: filter === cat ? '#fff' : 'var(--charcoal)',
                 border: filter === cat ? '1px solid var(--emerald-800)' : '1px solid rgba(0,0,0,0.1)',
@@ -116,93 +125,142 @@ export default function Lodge({ setActivePage }) {
         </div>
       </section>
 
-      {/* ---------- ROOMS GRID (MEDIUM COMPACT CARDS) ---------- */}
+      {/* ---------- ROOMS GRID: EQUAL WIDTH & HEIGHT (COMPACT MEDIUM SQUARE CARDS) ---------- */}
       <section style={{ padding: '50px 0', background: 'var(--ivory)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            {filteredRooms.map((room) => (
-              <div
-                key={room.id}
-                className="glass-card"
-                style={{
-                  background: '#fff',
-                  borderRadius: '18px',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  border: '1px solid rgba(0,0,0,0.08)',
-                }}
-              >
-                {/* Image & Price Tag */}
-                <div style={{ position: 'relative', height: '190px', overflow: 'hidden' }}>
-                  <img
-                    src={room.image}
-                    alt={room.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }}
-                    onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.08)')}
-                    onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                  />
-                  <div style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(7, 23, 44, 0.88)', backdropFilter: 'blur(8px)', color: 'var(--gold)', padding: '4px 14px', borderRadius: '30px', fontSize: '12.5px', fontWeight: 700, border: '1px solid var(--gold)', boxShadow: '0 4px 12px rgba(0,0,0,0.4)' }}>
-                    {room.price}
-                  </div>
-                  <div style={{ position: 'absolute', bottom: '10px', left: '12px', background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)', color: '#fff', padding: '3px 10px', borderRadius: '6px', fontSize: '11px', display: 'flex', gap: '8px', border: '1px solid rgba(255,255,255,0.15)' }}>
-                    <span>📐 {room.size}</span>
-                    <span>🛏️ {room.bed}</span>
-                  </div>
+        <div className="container" style={{ maxWidth: '1150px' }}>
+          {loading ? (
+            /* Effect #8: Skeleton Screen Shimmer Loaders */
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 360px))', justifyContent: 'center', gap: '26px' }}>
+              {[1, 2, 3].map((n) => (
+                <div key={n} style={{ background: '#fff', borderRadius: '20px', overflow: 'hidden', padding: '16px', border: '1px solid rgba(0,0,0,0.06)', height: '360px' }}>
+                  <div className="skeleton-loader" style={{ height: '160px', marginBottom: '14px' }} />
+                  <div className="skeleton-loader" style={{ height: '20px', width: '70%', marginBottom: '10px' }} />
+                  <div className="skeleton-loader" style={{ height: '14px', width: '90%', marginBottom: '16px' }} />
+                  <div className="skeleton-loader" style={{ height: '38px', width: '100%' }} />
                 </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 360px))',
+                justifyContent: 'center',
+                gap: '26px',
+              }}
+            >
+              {filteredRooms.map((room) => (
+                <div
+                  key={room.id}
+                  className="glass-card scroll-reveal"
+                  style={{
+                    background: '#fff',
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    width: '100%',
+                    maxWidth: '360px',
+                    height: '370px',
+                    margin: '0 auto',
+                  }}
+                >
+                  {/* Compact Clickable Image Header (150px height) */}
+                  <div
+                    onClick={() => setLightboxRoom(room)}
+                    className="img-zoom-container spring-hover"
+                    style={{
+                      height: '150px',
+                      flexShrink: 0,
+                      position: 'relative',
+                      cursor: 'pointer',
+                    }}
+                    title="Click to zoom image & view specifications"
+                  >
+                    <img
+                      src={room.image}
+                      alt={room.title}
+                    />
+                    
+                    {/* Zoom icon hint in top-left */}
+                    <div style={{ position: 'absolute', top: '10px', left: '10px', background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(6px)', color: '#fff', width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.2)', zIndex: 2 }}>
+                      <ZoomIn size={14} color="var(--gold)" />
+                    </div>
 
-                {/* Details */}
-                <div style={{ padding: '20px 22px', display: 'flex', flexDirection: 'column', flex: 1, justifyItems: 'space-between' }}>
-                  <div>
-                    <span style={{ fontSize: '11px', color: 'var(--emerald-600)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      ✦ {room.category} Collection
-                    </span>
-                    <h3 style={{ fontSize: '20px', color: 'var(--sapphire-900)', margin: '4px 0 8px' }}>
-                      {room.title}
-                    </h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '13.5px', lineHeight: 1.55, marginBottom: '16px' }}>
-                      {room.desc}
-                    </p>
+                    <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(7, 23, 44, 0.9)', backdropFilter: 'blur(8px)', color: 'var(--gold)', padding: '3px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 700, border: '1px solid var(--gold)', boxShadow: '0 2px 8px rgba(0,0,0,0.4)', zIndex: 2 }}>
+                      {room.price}
+                    </div>
+                    
+                    <div style={{ position: 'absolute', bottom: '8px', left: '10px', background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)', color: '#fff', padding: '2px 8px', borderRadius: '6px', fontSize: '10.5px', display: 'flex', gap: '8px', border: '1px solid rgba(255,255,255,0.15)', zIndex: 2 }}>
+                      <span>📐 {room.size}</span>
+                      <span>🛏️ {room.bed}</span>
+                    </div>
+                  </div>
 
-                    {/* Compact Tags Pill Grid */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '18px' }}>
-                      {room.tags.map((tag, i) => (
-                        <span key={i} style={{ fontSize: '11.5px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '4px 10px', borderRadius: '6px', fontWeight: 600, border: '1px solid rgba(29, 104, 82, 0.15)', transition: 'all 0.2s ease' }}>
-                          {tag}
+                  {/* Compact Body Content */}
+                  <div style={{ padding: '16px 18px 14px', display: 'flex', flexDirection: 'column', flex: 1, justifyItems: 'space-between' }}>
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                        <span style={{ fontSize: '10.5px', color: 'var(--emerald-600)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                          ✦ {room.category}
                         </span>
-                      ))}
-                    </div>
-                  </div>
+                        <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
+                          Max: <strong>{room.guests}</strong>
+                        </span>
+                      </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'space-between', gap: '10px', flexWrap: 'wrap', borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '14px', marginTop: 'auto' }}>
-                    <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                      <strong>Max:</strong> {room.guests}
+                      <h3
+                        onClick={() => setLightboxRoom(room)}
+                        className="hover-underline-slide"
+                        style={{ fontSize: '17.5px', color: 'var(--sapphire-900)', margin: '0 0 6px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', cursor: 'pointer', display: 'inline-block' }}
+                      >
+                        {room.title}
+                      </h3>
+                      
+                      {/* Strictly limited to 2 lines for equal height ratio */}
+                      <p style={{ color: 'var(--text-muted)', fontSize: '12.5px', lineHeight: 1.45, marginBottom: '12px', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '36px' }}>
+                        {room.desc}
+                      </p>
+
+                      {/* Single row compact tags */}
+                      <div style={{ display: 'flex', gap: '5px', overflow: 'hidden', whiteSpace: 'nowrap', marginBottom: '12px' }}>
+                        {room.tags.map((tag, i) => (
+                          <span key={i} style={{ fontSize: '10.5px', background: 'var(--emerald-50)', color: 'var(--emerald-800)', padding: '3px 8px', borderRadius: '6px', fontWeight: 600, border: '1px solid rgba(29, 104, 82, 0.15)', flexShrink: 0 }}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <button
-                      onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className="btn btn-emerald"
-                      style={{ padding: '8px 16px', fontSize: '12px', flex: '1 1 120px' }}
-                    >
-                      Inquire Reserve <ArrowRight size={13} />
-                    </button>
+
+                    {/* Compact Footer Button */}
+                    <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '10px', marginTop: 'auto' }}>
+                      <button
+                        onClick={() => { setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className="btn btn-emerald spring-hover"
+                        style={{ width: '100%', padding: '8px 16px', fontSize: '12px', justifyContent: 'center' }}
+                      >
+                        Inquire & Reserve Suite <ArrowRight size={13} />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ---------- HOSPITALITY STANDARDS GRID (WITH ATTRACTIVE HOVER GLOW) ---------- */}
+      {/* ---------- HOSPITALITY STANDARDS (BENTO GRID CARD HOVER GLOWS #9) ---------- */}
       <section style={{ padding: '60px 0', background: 'var(--beige)' }}>
         <div className="container">
-          <div className="section-head" style={{ marginBottom: '36px' }}>
+          <div className="section-head scroll-reveal" style={{ marginBottom: '36px' }}>
             <span className="eyebrow eyebrow-emerald">Lodge Hospitality</span>
             <h2>Our Standards of Comfort & Service</h2>
             <p style={{ fontSize: '15px' }}>Every lodge guest enjoys complimentary access to our signature five-star amenities.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+          <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
             {[
               { icon: Wifi, title: 'Complimentary High-Speed Wi-Fi', desc: 'Seamless 100 Mbps fiber connectivity across all suites and common areas.' },
               { icon: UserCheck, title: '24/7 Room Service & Dining', desc: 'Round-the-clock room dining service featuring South Indian & Continental menus.' },
@@ -215,16 +273,11 @@ export default function Lodge({ setActivePage }) {
               return (
                 <div
                   key={idx}
-                  className="glass-card"
+                  className="bento-card scroll-reveal"
                   style={{
-                    background: '#fff',
-                    padding: '22px',
-                    borderRadius: '16px',
-                    border: '1px solid rgba(0,0,0,0.06)',
                     display: 'flex',
                     gap: '14px',
                     alignItems: 'flex-start',
-                    cursor: 'default',
                   }}
                 >
                   <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--emerald-100)', color: 'var(--emerald-800)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(15, 56, 44, 0.1)' }}>
@@ -240,6 +293,130 @@ export default function Lodge({ setActivePage }) {
           </div>
         </div>
       </section>
+
+      {/* ---------- MOBILE-RESPONSIVE COMPACT LIGHTBOX POP-UP MODAL ---------- */}
+      {lightboxRoom && (
+        <div
+          onClick={() => setLightboxRoom(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(4, 13, 26, 0.94)',
+            zIndex: 2000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 'clamp(12px, 3vw, 24px)',
+            backdropFilter: 'blur(16px)',
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="animate-fade-in layered-shadow-lg"
+            style={{
+              position: 'relative',
+              maxWidth: '820px',
+              width: '100%',
+              maxHeight: '90vh',
+              overflowY: 'auto',
+              background: 'var(--sapphire-950)',
+              borderRadius: '20px',
+              border: '2px solid var(--gold)',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(200, 169, 107, 0.35)',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            {/* Compact Close Button */}
+            <button
+              onClick={() => setLightboxRoom(null)}
+              className="spring-hover"
+              style={{
+                position: 'absolute',
+                top: '12px',
+                right: '12px',
+                background: 'rgba(0, 0, 0, 0.78)',
+                border: '1px solid var(--gold)',
+                color: '#fff',
+                width: '38px',
+                height: '38px',
+                borderRadius: '50%',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 10,
+              }}
+              aria-label="Close modal"
+            >
+              <X size={20} />
+            </button>
+
+            {/* Compact High Resolution Image Preview (Capped height for mobile safety) */}
+            <div style={{ position: 'relative', maxHeight: 'clamp(200px, 42vh, 420px)', background: '#040d1a', overflow: 'hidden', flexShrink: 0 }}>
+              <img
+                src={lightboxRoom.image}
+                alt={lightboxRoom.title}
+                style={{ width: '100%', height: '100%', maxHeight: 'clamp(200px, 42vh, 420px)', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', bottom: '12px', left: '16px', background: 'rgba(7, 23, 44, 0.92)', backdropFilter: 'blur(8px)', color: 'var(--gold)', padding: '4px 14px', borderRadius: '20px', fontSize: '13.5px', fontWeight: 700, border: '1px solid var(--gold)', boxShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+                {lightboxRoom.price}
+              </div>
+            </div>
+
+            {/* Compact Suite Specs & Actions */}
+            <div style={{ padding: 'clamp(18px, 4vw, 28px)', background: 'linear-gradient(180deg, var(--sapphire-950) 0%, #07192f 100%)', color: '#fff' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '10px' }}>
+                <div>
+                  <span style={{ fontSize: '11px', color: 'var(--gold)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', display: 'block', marginBottom: '2px' }}>
+                    ✦ {lightboxRoom.category} Collection
+                  </span>
+                  <h3 style={{ fontSize: 'clamp(20px, 3.8vw, 26px)', color: '#fff', margin: 0, fontFamily: 'var(--font-serif)', lineHeight: 1.2 }}>
+                    {lightboxRoom.title}
+                  </h3>
+                </div>
+
+                <div style={{ display: 'flex', gap: '8px', background: 'rgba(255,255,255,0.06)', padding: '6px 12px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.15)', fontSize: '12px', flexWrap: 'wrap' }}>
+                  <span style={{ color: '#dcd1c1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Maximize2 size={13} color="var(--gold)" /> <strong>{lightboxRoom.size}</strong>
+                  </span>
+                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
+                  <span style={{ color: '#dcd1c1', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Users size={13} color="var(--gold)" /> <strong>{lightboxRoom.guests}</strong>
+                  </span>
+                </div>
+              </div>
+
+              <p style={{ color: '#c5cdd8', fontSize: '13.5px', lineHeight: 1.55, marginBottom: '16px', fontWeight: 300 }}>
+                {lightboxRoom.desc} Every suite features luxury custom orthopedic mattresses, high-speed fiber internet, and automated climate control for rejuvenating rest.
+              </p>
+
+              {/* All Tags Pill Grid (Compact) */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
+                {lightboxRoom.tags.map((tag, i) => (
+                  <span key={i} style={{ fontSize: '11.5px', background: 'rgba(200, 169, 107, 0.15)', color: 'var(--gold-light)', padding: '4px 12px', borderRadius: '20px', fontWeight: 600, border: '1px solid rgba(200, 169, 107, 0.3)' }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* Compact Bottom Actions */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '16px' }}>
+                <span style={{ fontSize: '12px', color: '#a0aab8' }}>
+                  💡 <strong>Need Custom Tariff?</strong> Chat with our Concierge.
+                </span>
+                <button
+                  onClick={() => { setLightboxRoom(null); setActivePage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className="btn btn-gold spring-hover"
+                  style={{ padding: '10px 22px', fontSize: '12.5px', flex: '1 1 180px', justifyContent: 'center' }}
+                >
+                  Proceed to Inquire <ArrowRight size={15} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

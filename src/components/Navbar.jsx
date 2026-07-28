@@ -33,16 +33,13 @@ export default function Navbar({ activePage, setActivePage }) {
 
   return (
     <header
+      className="glass-navbar"
       style={{
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-        background: isScrolled ? 'rgba(7, 23, 44, 0.96)' : 'linear-gradient(180deg, rgba(7, 23, 44, 0.92) 0%, rgba(15, 56, 44, 0.85) 100%)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: isScrolled ? '1px solid rgba(200, 169, 107, 0.3)' : '1px solid rgba(255, 255, 255, 0.1)',
+        transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
         padding: isScrolled ? '12px 0' : '18px 0',
-        boxShadow: isScrolled ? '0 10px 30px rgba(0,0,0,0.35)' : 'none',
       }}
     >
       <div
@@ -57,6 +54,7 @@ export default function Navbar({ activePage, setActivePage }) {
         {/* Logo */}
         <div
           onClick={() => handleNavClick('home')}
+          className="spring-hover"
           style={{
             cursor: 'pointer',
             display: 'flex',
@@ -144,7 +142,7 @@ export default function Navbar({ activePage, setActivePage }) {
                       letterSpacing: '0.05em',
                       textTransform: 'uppercase',
                       cursor: 'pointer',
-                      transition: 'all 0.3s ease',
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '6px',
@@ -152,12 +150,14 @@ export default function Navbar({ activePage, setActivePage }) {
                     }}
                     onMouseOver={(e) => {
                       if (!isActive) {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
                       }
                     }}
                     onMouseOut={(e) => {
                       if (!isActive) {
                         e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.transform = 'translateY(0)';
                       }
                     }}
                   >
@@ -174,7 +174,7 @@ export default function Navbar({ activePage, setActivePage }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
           <button
             onClick={() => handleNavClick('contact')}
-            className="btn btn-gold header-cta-btn"
+            className="btn btn-gold header-cta-btn spring-hover"
             style={{
               padding: '10px 20px',
               fontSize: '12px',
@@ -210,9 +210,8 @@ export default function Navbar({ activePage, setActivePage }) {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div
-          className="animate-fade-in"
+          className="animate-fade-in glass-navbar"
           style={{
-            background: 'var(--sapphire-900)',
             borderTop: '1px solid rgba(200, 169, 107, 0.3)',
             padding: '20px',
             display: 'flex',
@@ -242,6 +241,7 @@ export default function Navbar({ activePage, setActivePage }) {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                 }}
               >
                 {Icon && <Icon size={18} />}

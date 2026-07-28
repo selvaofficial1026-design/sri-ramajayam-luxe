@@ -4,6 +4,14 @@ import { Camera, X, ZoomIn, Sparkles } from 'lucide-react';
 export default function Gallery() {
   const [filter, setFilter] = useState('All');
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleFilterChange = (cat) => {
+    if (filter === cat) return;
+    setLoading(true);
+    setFilter(cat);
+    setTimeout(() => setLoading(false), 450); // Simulate brief shimmer loader for effect #8
+  };
 
   const images = [
     {
@@ -75,7 +83,7 @@ export default function Gallery() {
 
   return (
     <div className="animate-fade-in">
-      {/* ---------- HEADER BANNER WITH GOLD SHIMMER & FLOATING ORBS ---------- */}
+      {/* ---------- HEADER BANNER WITH TEXT REVEAL MASKS & AMBIENT ORBS ---------- */}
       <section
         style={{
           background: 'linear-gradient(135deg, var(--emerald-900) 0%, var(--sapphire-900) 100%)',
@@ -95,7 +103,7 @@ export default function Gallery() {
             Visual Tour & Highlights
           </span>
           <h1 style={{ fontSize: 'clamp(30px, 4.5vw, 48px)', color: '#fff', marginBottom: '14px' }}>
-            The <span className="gold-shimmer-text">Sri Ramajayam Luxe</span> Gallery
+            <span className="text-mask-container"><span className="text-mask-reveal">The <span className="gold-shimmer-text">Sri Ramajayam Luxe</span> Gallery</span></span>
           </h1>
           <p style={{ fontSize: 'clamp(14.5px, 2.3vw, 17px)', color: '#dcd1c1', fontWeight: 300, lineHeight: 1.6 }}>
             Explore our architectural grandeur, serene lodge suites, opulent banquet decorations, and joyous celebrations captured through our lens.
@@ -103,13 +111,14 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* ---------- FILTER TABS WITH GLOWING ACTIVE STATE ---------- */}
+      {/* ---------- FILTER TABS WITH CUBIC BEZIER HOVER ---------- */}
       <section style={{ padding: '26px 0', background: 'var(--ivory)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap' }}>
           {['All', 'Rooms', 'Banquets', 'Weddings', 'Dining', 'Lounge'].map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
+              onClick={() => handleFilterChange(cat)}
+              className="spring-hover"
               style={{
                 padding: '8px 18px',
                 borderRadius: '30px',
@@ -118,7 +127,6 @@ export default function Gallery() {
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
                 cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                 background: filter === cat ? 'var(--sapphire-800)' : '#fff',
                 color: filter === cat ? '#fff' : 'var(--charcoal)',
                 border: filter === cat ? '1px solid var(--sapphire-800)' : '1px solid rgba(0,0,0,0.1)',
@@ -132,56 +140,58 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* ---------- GALLERY GRID WITH HOVER GLOW CARDS ---------- */}
+      {/* ---------- GALLERY GRID WITH SKELETON SHIMMER (#8) & SMOOTH ZOOM (#10) ---------- */}
       <section style={{ padding: '50px 0', background: 'var(--ivory)' }}>
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-              gap: '24px',
-            }}
-          >
-            {filteredImages.map((img) => (
-              <div
-                key={img.id}
-                onClick={() => setLightboxImage(img)}
-                className="glass-card"
-                style={{
-                  position: 'relative',
-                  height: '250px',
-                  borderRadius: '18px',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  background: '#000',
-                  border: '1px solid rgba(0,0,0,0.1)',
-                }}
-              >
-                <img
-                  src={img.url}
-                  alt={img.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)', opacity: 0.9 }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.08)';
-                    e.currentTarget.style.opacity = '1';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.opacity = '0.9';
-                  }}
-                />
-                <div style={{ position: 'absolute', top: '12px', left: '12px', background: 'rgba(7, 23, 44, 0.85)', backdropFilter: 'blur(8px)', color: 'var(--gold)', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', border: '1px solid var(--gold)', boxShadow: '0 4px 10px rgba(0,0,0,0.3)' }}>
-                  {img.tag}
+          {loading ? (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px' }}>
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <div key={n} style={{ height: '250px', borderRadius: '18px', overflow: 'hidden' }}>
+                  <div className="skeleton-loader" style={{ width: '100%', height: '100%' }} />
                 </div>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(0deg, rgba(7, 23, 44, 0.95) 0%, rgba(7, 23, 44, 0.4) 60%, transparent 100%)', padding: '28px 16px 14px', color: '#fff', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', transition: 'padding 0.3s ease' }}>
-                  <span style={{ fontSize: '14.5px', fontWeight: 600, fontFamily: 'var(--font-serif)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{img.title}</span>
-                  <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(200, 169, 107, 0.2)', border: '1px solid var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <ZoomIn size={16} color="var(--gold)" />
+              ))}
+            </div>
+          ) : (
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                gap: '24px',
+              }}
+            >
+              {filteredImages.map((img) => (
+                <div
+                  key={img.id}
+                  onClick={() => setLightboxImage(img)}
+                  className="glass-card img-zoom-container scroll-reveal"
+                  style={{
+                    position: 'relative',
+                    height: '250px',
+                    borderRadius: '18px',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    background: '#000',
+                    border: '1px solid rgba(0,0,0,0.1)',
+                  }}
+                >
+                  <img
+                    src={img.url}
+                    alt={img.title}
+                    style={{ opacity: 0.9 }}
+                  />
+                  <div style={{ position: 'absolute', top: '12px', left: '12px', background: 'rgba(7, 23, 44, 0.85)', backdropFilter: 'blur(8px)', color: 'var(--gold)', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', border: '1px solid var(--gold)', boxShadow: '0 4px 10px rgba(0,0,0,0.3)', zIndex: 2 }}>
+                    {img.tag}
+                  </div>
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(0deg, rgba(7, 23, 44, 0.95) 0%, rgba(7, 23, 44, 0.4) 60%, transparent 100%)', padding: '28px 16px 14px', color: '#fff', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', transition: 'padding 0.3s ease', zIndex: 2 }}>
+                    <span style={{ fontSize: '14.5px', fontWeight: 600, fontFamily: 'var(--font-serif)', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{img.title}</span>
+                    <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(200, 169, 107, 0.2)', border: '1px solid var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <ZoomIn size={16} color="var(--gold)" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -203,24 +213,29 @@ export default function Gallery() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
+            className="animate-fade-in layered-shadow-lg"
             style={{
               position: 'relative',
-              maxWidth: '900px',
+              maxWidth: '850px',
               width: '100%',
+              maxHeight: '90vh',
+              overflowY: 'auto',
               background: 'var(--sapphire-950)',
               borderRadius: '20px',
-              overflow: 'hidden',
               border: '2px solid var(--gold)',
-              boxShadow: '0 25px 60px rgba(0,0,0,0.7), 0 0 35px rgba(200, 169, 107, 0.3)',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.8), 0 0 35px rgba(200, 169, 107, 0.35)',
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
             <button
               onClick={() => setLightboxImage(null)}
+              className="spring-hover"
               style={{
                 position: 'absolute',
                 top: '12px',
                 right: '12px',
-                background: 'rgba(0, 0, 0, 0.7)',
+                background: 'rgba(0, 0, 0, 0.75)',
                 border: '1px solid var(--gold)',
                 color: '#fff',
                 width: '38px',
@@ -231,24 +246,24 @@ export default function Gallery() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 zIndex: 10,
-                transition: 'all 0.3s ease',
               }}
-              onMouseOver={(e) => (e.currentTarget.style.background = 'var(--gold)')}
-              onMouseOut={(e) => (e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)')}
+              aria-label="Close modal"
             >
               <X size={20} />
             </button>
-            <img
-              src={lightboxImage.url}
-              alt={lightboxImage.title}
-              style={{ width: '100%', maxHeight: '65vh', objectFit: 'contain', background: '#040d1a' }}
-            />
-            <div style={{ padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ position: 'relative', maxHeight: 'clamp(220px, 50vh, 520px)', background: '#040d1a', overflow: 'hidden', flexShrink: 0 }}>
+              <img
+                src={lightboxImage.url}
+                alt={lightboxImage.title}
+                style={{ width: '100%', height: '100%', maxHeight: 'clamp(220px, 50vh, 520px)', objectFit: 'contain', background: '#040d1a' }}
+              />
+            </div>
+            <div style={{ padding: 'clamp(14px, 3.5vw, 20px)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.12)' }}>
               <div>
-                <span style={{ fontSize: '11px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700 }}>
+                <span style={{ fontSize: '11px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700, display: 'block', marginBottom: '2px' }}>
                   ✦ {lightboxImage.tag}
                 </span>
-                <h3 style={{ fontSize: 'clamp(18px, 4vw, 22px)', color: '#fff', margin: '4px 0 0' }}>{lightboxImage.title}</h3>
+                <h3 style={{ fontSize: 'clamp(17px, 3.8vw, 22px)', color: '#fff', margin: 0, lineHeight: 1.25 }}>{lightboxImage.title}</h3>
               </div>
             </div>
           </div>
