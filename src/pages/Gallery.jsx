@@ -98,17 +98,18 @@ export default function Gallery() {
         <div className="animate-float" style={{ position: 'absolute', bottom: '-80px', left: '-50px', width: '350px', height: '350px', background: 'radial-gradient(circle, rgba(29, 104, 82, 0.35) 0%, rgba(0,0,0,0) 70%)', borderRadius: '50%', pointerEvents: 'none', animationDelay: '-1s' }} />
         
         <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '780px' }}>
-          <span className="eyebrow eyebrow-gold" style={{ background: 'rgba(200, 169, 107, 0.2)', boxShadow: '0 0 15px rgba(200, 169, 107, 0.25)' }}>
+          <span className="eyebrow eyebrow-gold reveal-left" style={{ background: 'rgba(200, 169, 107, 0.2)', boxShadow: '0 0 15px rgba(200, 169, 107, 0.25)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
             <Sparkles size={14} color="var(--gold)" />
             Visual Tour & Highlights
           </span>
           <h1 style={{ fontSize: 'clamp(30px, 4.5vw, 48px)', color: '#fff', marginBottom: '14px' }}>
             <span className="text-mask-container"><span className="text-mask-reveal">The <span className="gold-shimmer-text">Sri Ramajayam Luxe</span> Gallery</span></span>
           </h1>
-          <p style={{ fontSize: 'clamp(14.5px, 2.3vw, 17px)', color: '#dcd1c1', fontWeight: 300, lineHeight: 1.6 }}>
+          <p className="reveal-right" style={{ fontSize: 'clamp(14.5px, 2.3vw, 17px)', color: '#dcd1c1', fontWeight: 300, lineHeight: 1.6, transitionDelay: '150ms' }}>
             Explore our architectural grandeur, serene lodge suites, opulent banquet decorations, and joyous celebrations captured through our lens.
           </p>
         </div>
+
       </section>
 
       {/* ---------- FILTER TABS WITH CUBIC BEZIER HOVER ---------- */}

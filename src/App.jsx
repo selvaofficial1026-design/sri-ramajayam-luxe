@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -10,6 +10,29 @@ import { MessageSquare, PhoneCall } from 'lucide-react';
 
 export default function App() {
   const [activePage, setActivePage] = useState('home');
+
+  useEffect(() => {
+    const handleScrollReveal = () => {
+      const elements = document.querySelectorAll('.scroll-reveal, .reveal-up, .reveal-left, .reveal-right');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('reveal-active');
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      elements.forEach((el) => observer.observe(el));
+      return () => observer.disconnect();
+    };
+
+    const timer = setTimeout(handleScrollReveal, 60);
+    return () => clearTimeout(timer);
+  }, [activePage]);
+
 
   const renderPage = () => {
     switch (activePage) {

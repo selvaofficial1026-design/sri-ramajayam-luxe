@@ -254,11 +254,12 @@ export default function Lodge({ setActivePage }) {
       {/* ---------- HOSPITALITY STANDARDS (BENTO GRID CARD HOVER GLOWS #9) ---------- */}
       <section style={{ padding: '60px 0', background: 'var(--beige)' }}>
         <div className="container">
-          <div className="section-head scroll-reveal" style={{ marginBottom: '36px' }}>
-            <span className="eyebrow eyebrow-emerald">Lodge Hospitality</span>
-            <h2>Our Standards of Comfort & Service</h2>
-            <p style={{ fontSize: '15px' }}>Every lodge guest enjoys complimentary access to our signature five-star amenities.</p>
+          <div className="section-head" style={{ marginBottom: '36px', overflow: 'hidden' }}>
+            <span className="eyebrow eyebrow-emerald reveal-left" style={{ display: 'inline-block' }}>Lodge Hospitality</span>
+            <h2 className="reveal-left" style={{ transitionDelay: '100ms' }}>Our Standards of Comfort & Service</h2>
+            <p className="reveal-right" style={{ fontSize: '15px', transitionDelay: '200ms' }}>Every lodge guest enjoys complimentary access to our signature five-star amenities.</p>
           </div>
+
 
           <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '26px' }}>
             {[

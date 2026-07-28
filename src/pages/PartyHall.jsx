@@ -76,11 +76,12 @@ export default function PartyHall({ setActivePage }) {
       {/* ---------- UNIQUE ARCHITECTURAL SHOWCASE: MEDIUM SIZE COMPACT SPLIT LAYOUT ---------- */}
       <section style={{ padding: '60px 0', background: 'var(--ivory)', position: 'relative' }}>
         <div className="container" style={{ maxWidth: '980px' }}>
-          <div className="section-head scroll-reveal" style={{ marginBottom: '40px' }}>
-            <span className="eyebrow eyebrow-sapphire">Architectural Digest</span>
-            <h2>Our Signature Celebration Venues</h2>
-            <p style={{ fontSize: '15px' }}>Unlike standard hotel rooms, our banquets are grand architectural arenas crafted for panoramic views and flawless acoustics.</p>
+          <div className="section-head" style={{ marginBottom: '40px', overflow: 'hidden' }}>
+            <span className="eyebrow eyebrow-sapphire reveal-left" style={{ display: 'inline-block' }}>Architectural Digest</span>
+            <h2 className="reveal-left" style={{ transitionDelay: '100ms' }}>Our Signature Celebration Venues</h2>
+            <p className="reveal-right" style={{ fontSize: '15px', transitionDelay: '200ms' }}>Unlike standard hotel rooms, our banquets are grand architectural arenas crafted for panoramic views and flawless acoustics.</p>
           </div>
+
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             {halls.map((hall, idx) => {
@@ -226,11 +227,12 @@ export default function PartyHall({ setActivePage }) {
       {/* ---------- EVENT SERVICES & CATERING (WITH BENTO GRID CARD HOVER GLOWS #9) ---------- */}
       <section style={{ padding: '60px 0', background: 'var(--beige)' }}>
         <div className="container">
-          <div className="section-head scroll-reveal" style={{ marginBottom: '36px' }}>
-            <span className="eyebrow eyebrow-sapphire">Turnkey Event Services</span>
-            <h2>Everything Needed for a Flawless Event</h2>
-            <p style={{ fontSize: '15px' }}>We provide complete event management assistance from decor selection to traditional feasts.</p>
+          <div className="section-head" style={{ marginBottom: '36px', overflow: 'hidden' }}>
+            <span className="eyebrow eyebrow-sapphire reveal-left" style={{ display: 'inline-block' }}>Turnkey Event Services</span>
+            <h2 className="reveal-left" style={{ transitionDelay: '100ms' }}>Everything Needed for a Flawless Event</h2>
+            <p className="reveal-right" style={{ fontSize: '15px', transitionDelay: '200ms' }}>We provide complete event management assistance from decor selection to traditional feasts.</p>
           </div>
+
 
           <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '26px' }}>
             {[

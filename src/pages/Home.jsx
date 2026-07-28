@@ -96,10 +96,10 @@ export default function Home({ setActivePage }) {
       {/* ---------- DUAL SHOWCASE SECTION: EQUAL WIDTH & HEIGHT (COMPACT MEDIUM SQUARE) ---------- */}
       <section style={{ padding: '70px 0', background: 'var(--ivory)' }}>
         <div className="container" style={{ maxWidth: '960px' }}>
-          <div className="section-head scroll-reveal" style={{ marginBottom: '40px' }}>
-            <span className="eyebrow eyebrow-gold">Tailored Experiences</span>
-            <h2>Two Worlds of Excellence Under One Roof</h2>
-            <p style={{ fontSize: '15px' }}>Whether you seek a tranquil retreat from your travels or a majestic venue to host guests, Sri Ramajayam Luxe is engineered for perfection.</p>
+          <div className="section-head" style={{ marginBottom: '40px', overflow: 'hidden' }}>
+            <span className="eyebrow eyebrow-gold reveal-left" style={{ display: 'inline-block' }}>Tailored Experiences</span>
+            <h2 className="reveal-left" style={{ transitionDelay: '100ms' }}>Two Worlds of Excellence Under One Roof</h2>
+            <p className="reveal-right" style={{ fontSize: '15px', transitionDelay: '200ms' }}>Whether you seek a tranquil retreat from your travels or a majestic venue to host guests, Sri Ramajayam Luxe is engineered for perfection.</p>
           </div>
 
           <div
@@ -216,16 +216,17 @@ export default function Home({ setActivePage }) {
       </section>
 
       {/* ---------- OUR HERITAGE STORY ---------- */}
-      <section className="scroll-reveal" style={{ padding: '70px 0', background: 'var(--beige)', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <section style={{ padding: '70px 0', background: 'var(--beige)', borderTop: '1px solid rgba(0,0,0,0.06)', overflow: 'hidden' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '44px', alignItems: 'center' }}>
           <div>
-            <span className="eyebrow eyebrow-sapphire">Our Heritage & Promise</span>
-            <h2 style={{ fontSize: 'clamp(26px, 4vw, 38px)', color: 'var(--sapphire-900)', marginBottom: '16px' }}>
+            <span className="eyebrow eyebrow-sapphire reveal-left" style={{ display: 'inline-block' }}>Our Heritage & Promise</span>
+            <h2 className="reveal-left" style={{ fontSize: 'clamp(26px, 4vw, 38px)', color: 'var(--sapphire-900)', marginBottom: '16px', transitionDelay: '100ms' }}>
               Inspired by Timeless Standards of Excellence
             </h2>
-            <p style={{ color: 'var(--charcoal)', fontSize: '15px', lineHeight: 1.7, marginBottom: '16px' }}>
+            <p className="reveal-right" style={{ color: 'var(--charcoal)', fontSize: '15px', lineHeight: 1.7, marginBottom: '16px', transitionDelay: '200ms' }}>
               Drawing inspiration from classic milestones in South Indian hospitality, <strong>Sri Ramajayam Luxe</strong> was conceptualized to combine <em>serene, five-star suite accommodations</em> with <em>world-class event celebration spaces</em> in one accessible location.
             </p>
+
             <p style={{ color: 'var(--text-muted)', fontSize: '14.5px', lineHeight: 1.7, marginBottom: '26px' }}>
               Every corner of our property is crafted with meticulous attention to detail—from our imported crystal chandeliers in the ballroom to the custom orthopedic mattresses in our guest suites.
             </p>
@@ -266,11 +267,12 @@ export default function Home({ setActivePage }) {
       {/* ---------- TESTIMONIALS (WITH BENTO GRID CARD HOVER GLOWS) ---------- */}
       <section style={{ padding: '70px 0', background: 'var(--ivory)' }}>
         <div className="container">
-          <div className="section-head scroll-reveal" style={{ marginBottom: '40px' }}>
-            <span className="eyebrow eyebrow-emerald">Guest Experiences</span>
-            <h2>What Our Honored Guests Say</h2>
-            <p style={{ fontSize: '15px' }}>Read genuine stories from families who celebrated weddings and travelers who found serene comfort.</p>
+          <div className="section-head" style={{ marginBottom: '40px', overflow: 'hidden' }}>
+            <span className="eyebrow eyebrow-emerald reveal-left" style={{ display: 'inline-block' }}>Guest Experiences</span>
+            <h2 className="reveal-left" style={{ transitionDelay: '100ms' }}>What Our Honored Guests Say</h2>
+            <p className="reveal-right" style={{ fontSize: '15px', transitionDelay: '200ms' }}>Read genuine stories from families who celebrated weddings and travelers who found serene comfort.</p>
           </div>
+
 
           <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
             {[

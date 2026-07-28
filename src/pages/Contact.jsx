@@ -24,17 +24,18 @@ export default function Contact() {
         <div className="animate-float" style={{ position: 'absolute', bottom: '-70px', left: '10%', width: '280px', height: '280px', background: 'radial-gradient(circle, rgba(38, 133, 105, 0.3) 0%, rgba(0,0,0,0) 70%)', borderRadius: '50%', pointerEvents: 'none', animationDelay: '-1s' }} />
         
         <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '720px' }}>
-          <span className="eyebrow eyebrow-gold" style={{ background: 'rgba(200, 169, 107, 0.2)', boxShadow: '0 0 15px rgba(200, 169, 107, 0.25)', marginBottom: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+          <span className="eyebrow eyebrow-gold reveal-left" style={{ background: 'rgba(200, 169, 107, 0.2)', boxShadow: '0 0 15px rgba(200, 169, 107, 0.25)', marginBottom: '12px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
             <Sparkles size={13} color="var(--gold)" />
             Concierge & Headquarters Desk
           </span>
           <h1 style={{ fontSize: 'clamp(28px, 4vw, 42px)', color: '#fff', marginBottom: '10px' }}>
             <span className="text-mask-container"><span className="text-mask-reveal">Direct <span className="gold-shimmer-text">24/7 Access</span> Channels</span></span>
           </h1>
-          <p style={{ fontSize: '14.5px', color: '#dcd1c1', fontWeight: 300, lineHeight: 1.5, margin: 0 }}>
+          <p className="reveal-right" style={{ fontSize: '14.5px', color: '#dcd1c1', fontWeight: 300, lineHeight: 1.5, margin: 0, transitionDelay: '150ms' }}>
             We operate around the clock to provide instant reservation support, site inspection appointments, and customized banquet tariffs.
           </p>
         </div>
+
       </section>
 
       {/* ---------- COMPACT BENTO HEADQUARTERS GRID (NO FORM) ---------- */}

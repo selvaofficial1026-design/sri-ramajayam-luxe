@@ -234,17 +234,35 @@ img {
   }
 }
 
-.scroll-reveal {
-  animation: scrollFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* --------------------------------------------------------------------------
+   EFFECT #4: Advanced IntersectionObserver Scroll Animations
+   Letters & Text sliding from side (left/right), Cards popping up from below!
+   -------------------------------------------------------------------------- */
+.scroll-reveal,
+.reveal-up {
+  opacity: 0;
+  transform: translateY(65px) scale(0.93);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-/* Use modern CSS view() timeline when supported by browser */
-@supports (animation-timeline: view()) {
-  .scroll-reveal-native {
-    animation: scrollFadeUp linear both;
-    animation-timeline: view();
-    animation-range: entry 15% cover 35%;
-  }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-75px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(75px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-active {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
 }
 
 /* --------------------------------------------------------------------------
